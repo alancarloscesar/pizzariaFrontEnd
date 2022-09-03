@@ -7,7 +7,29 @@ import logoImg from '../../public/logo.png';
 import { Input } from './components/ui/Input'
 import { Button } from './components/ui/Button'
 
+import { useContext, FormEvent, useState } from 'react';//usar o context o form event para não atualizar a page
+import { AuthContext } from '../contexts/AuthContext';//meu context
+
+import Link from 'next/link';
+
+
 export default function Home() {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  
+  const {signIn} = useContext(AuthContext)
+  async function handleLogin(event: FormEvent){
+    event.preventDefault();//para não atualizar a page
+
+    let data ={
+      email,
+      password
+    }
+    await signIn(data)
+  }
+  
   return (
     <>
     <Head>
@@ -17,15 +39,21 @@ export default function Home() {
       <Image src={logoImg} alt="Logo Smart Menu" />
 
       <div className={styles.login}>
-        <form>
+        <form onSubmit={handleLogin}>
           <Input
             placeholder="Digite seu email..."
             type="text"
+
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
           />
 
           <Input
             placeholder="Sua senha..."
             type="password"
+
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
           />
           
           <Button
@@ -34,6 +62,10 @@ export default function Home() {
           >
             Acessar
           </Button>
+
+          <Link href='/signup'>
+              <a className={styles.text}>Não tem uma conta? crie uma agora mesmo!</a>
+          </Link>
 
         </form>
       </div>

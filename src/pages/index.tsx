@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image';
 import styles from '../../styles/home.module.scss';
 import { toast } from 'react-toastify'
+import {canSSRGuest} from '../utils/canSSRGuest'
 
 import logoImg from '../../public/logo.png';
 
@@ -85,3 +86,11 @@ export default function Home() {
     </>
   )
 }
+
+
+//config de rotas privadas
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props: {}
+  }
+})

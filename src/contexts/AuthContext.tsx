@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useState, useEffect } from 'react';
 import {toast} from 'react-toastify'
 
 import { api } from '../services/apiClient';
@@ -53,6 +53,26 @@ export function signOut() {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>()
   const isAuthenticated = !!user;
+
+  useEffect(()=>{
+    const {'@nextauth.token': token} = parseCookies();
+
+    if(token){
+      api.get('/me').then(response =>{//se der certo a requisição /me
+        const {id, name, email} = response.data;
+
+        setUser({
+          id,
+          name,
+          email
+        })
+      })
+      .catch(()=>{
+        //se não der certo a requisição /me desloga e destroi o cookie
+        signOut();//função que ja faz tudo isso
+      })
+    }
+  },[])
 
   async function signIn({ email, password }: SignInProps) {
     try {

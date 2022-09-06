@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image';
 import styles from '../../styles/home.module.scss';
+import { toast } from 'react-toastify'
 
 import logoImg from '../../public/logo.png';
 
@@ -18,58 +19,69 @@ export default function Home() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  
-  const {signIn} = useContext(AuthContext)
-  async function handleLogin(event: FormEvent){
+
+  const { signIn } = useContext(AuthContext)
+
+  async function handleLogin(event: FormEvent) {
     event.preventDefault();//para não atualizar a page
 
-    let data ={
+    if (email == '' || password == '') {
+      toast.warning('Preencha todos os campos!!!')
+      return;
+    }
+
+    setLoading(true)//loading girando
+
+    let data = {
       email,
       password
     }
     await signIn(data)
+
+    setLoading(false)//loading parando
+   
   }
-  
+
   return (
     <>
-    <Head>
-      <title>SujeitoPizza - Faça seu login</title> 
-    </Head>
-    <div className={styles.container}>
-      <Image src={logoImg} alt="Logo Smart Menu" />
+      <Head>
+        <title>SujeitoPizza - Faça seu login</title>
+      </Head>
+      <div className={styles.container}>
+        <Image src={logoImg} alt="Logo Smart Menu" />
 
-      <div className={styles.login}>
-        <form onSubmit={handleLogin}>
-          <Input
-            placeholder="Digite seu email..."
-            type="text"
+        <div className={styles.login}>
+          <form onSubmit={handleLogin}>
+            <Input
+              placeholder="Digite seu email..."
+              type="text"
 
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-          />
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-          <Input
-            placeholder="Sua senha..."
-            type="password"
+            <Input
+              placeholder="Sua senha..."
+              type="password"
 
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-          />
-          
-          <Button
-            type="submit"
-            loading={false}
-          >
-            Acessar
-          </Button>
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-          <Link href='/signup'>
+            <Button
+              type="submit"
+              loading={loading}
+            >
+              Acessar
+            </Button>
+
+            <Link href='/signup'>
               <a className={styles.text}>Não tem uma conta? crie uma agora mesmo!</a>
-          </Link>
+            </Link>
 
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState, useEffect } from 'react';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import { api } from '../services/apiClient';
 
@@ -12,7 +12,7 @@ type AuthContextData = {
   isAuthenticated: boolean;
   signIn: (credentials: SignInProps) => Promise<void>;
   signOut: () => void;
-  signUp: (credentials: SignUpProps) => Promise<void>
+  signUp: (credentials: SignUpProps) => Promise<void>;
 }
 
 type UserProps = {
@@ -31,6 +31,7 @@ type SignUpProps = {
   email: string;
   password: string;
 }
+
 
 type AuthProviderProps = {
   children: ReactNode;
@@ -54,12 +55,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>()
   const isAuthenticated = !!user;
 
-  useEffect(()=>{
-    const {'@nextauth.token': token} = parseCookies();
+  useEffect(() => {
+    const { '@nextauth.token': token } = parseCookies();
 
-    if(token){
-      api.get('/me').then(response =>{//se der certo a requisição /me
-        const {id, name, email} = response.data;
+    if (token) {
+      api.get('/me').then(response => {//se der certo a requisição /me
+        const { id, name, email } = response.data;
 
         setUser({
           id,
@@ -67,12 +68,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
           email
         })
       })
-      .catch(()=>{
-        //se não der certo a requisição /me desloga e destroi o cookie
-        signOut();//função que ja faz tudo isso
-      })
+        .catch(() => {
+          //se não der certo a requisição /me desloga e destroi o cookie
+          signOut();//função que ja faz tudo isso
+        })
     }
-  },[])
+  }, [])
 
   async function signIn({ email, password }: SignInProps) {
     try {
@@ -98,7 +99,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       //Passar para proximas requisiçoes o nosso token
       api.defaults.headers['Authorization'] = `Bearer ${token}`
 
-      toast.success("Bem-vindo")
+      toast.success(`Bem Vindo(a) ${user?.name}`)
       //Redirecionar o user para /dashboard
       Router.push('/dashboard')
 

@@ -64,7 +64,7 @@ export default function Product({categoryList}: CategoryProps) {
 
             const data  = new FormData();//para trabalhar quando usa multipart no insomnia
             
-            data.append('name', name)
+            data.append('name', name.toUpperCase())
             data.append('price', preco)
             data.append('description', descricao)
             data.append('file', imageAvatar)

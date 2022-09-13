@@ -9,9 +9,11 @@ interface ModalOrderProps {
     isOpen: boolean;
     onRequestClose: () => void;
     order: OrderItemProps[];
+
+    handleFinishOrder: (id: string) => void;//para finalizar o pedido
 }
 
-export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
+export function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }: ModalOrderProps) {
 
     const customStyles = {
         content: {
@@ -30,8 +32,8 @@ export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             style={customStyles}
-            
-            
+
+
         >
 
             <button
@@ -57,7 +59,7 @@ export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
                     </section>
                 ))}
 
-                <button className={styles.finishedOrder}>
+                <button className={styles.finishedOrder} onClick={() => {handleFinishOrder(order[0].order_id) }}>
                     Concluir Pedido
                 </button>
 

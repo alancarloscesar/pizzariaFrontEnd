@@ -71,6 +71,23 @@ export default function Dashboard({ orders }: HomeProps) {
 
     }
 
+    async function handleFinishItem(id: string) {//função para finalizar o pedido
+        const apiClient = setupAPIClient();
+        await apiClient.put('/order/finish', {//rota para mudar o pedido para true
+            order_id: id
+        })
+        const response = await apiClient.get('/order')//pega rota das mesas 
+        setOrderList(response.data)//passa no state para atualizar a lista de mesas
+        setModalVisible(false)//fecha modal
+    }
+
+    async function handleRefreshOrder() {
+        const apiClient = setupAPIClient();
+        const response = await apiClient.get('/order');
+
+        setOrderList(response.data)
+    }
+
 
     Modal.setAppElement('#__next');
 
@@ -86,12 +103,18 @@ export default function Dashboard({ orders }: HomeProps) {
 
                     <div className={styles.containerHeader}>
                         <h1>Últimos pedidos</h1>
-                        <button>
+                        <button onClick={handleRefreshOrder}>
                             <FiRefreshCcw size={25} color="#3fffa3" />
                         </button>
                     </div>
 
                     <article className={styles.listOreders}>
+
+                        {orderList.length === 0 && (
+                            <span className={styles.orderItem} style={{padding: 22, color: '#9e9a9a'}}>
+                                Nenhum pedido encontrado...   :(
+                            </span>
+                        )}
 
                         {orderList.map(item => (
                             <section key={item.id} className={styles.orderItem}>
@@ -111,6 +134,7 @@ export default function Dashboard({ orders }: HomeProps) {
                         isOpen={modalVisible}
                         onRequestClose={handleCloseModal}
                         order={modalItem}
+                        handleFinishOrder={handleFinishItem}//chamando função de finalizar
                     />
                 )}
 

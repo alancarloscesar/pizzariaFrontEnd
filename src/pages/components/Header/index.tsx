@@ -5,13 +5,26 @@ import { FiLogOut } from 'react-icons/fi'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { useContext } from 'react'
 import { FiMenu } from 'react-icons/fi'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import MenuMobile from '../MenuMobile'
+import { setupAPIClient } from '../../../services/api'
+import { type } from 'os'
 
 export default function Header() {
 
     const [menuMobile, setMenuMobile] = useState(false)
     const { signOut } = useContext(AuthContext)
+    const [typeUser, setTypeUser] = useState('')
+
+    const api = setupAPIClient();
+
+    useEffect(() => {
+        async function loadUser() {
+            const response = await api.get('/me')
+            setTypeUser(response.data.type)
+        }
+        loadUser()
+    }, [])
 
     return (
         <>
@@ -20,7 +33,7 @@ export default function Header() {
                     <MenuMobile />
                 )
             }
-            <div className={styles.container} style={menuMobile ? {display: 'none'} : {}}>
+            <div className={styles.container} style={menuMobile ? { display: 'none' } : {}}>
                 {/* <div className={styles.container} style={menuMobile ? {backgroundColor:"#ff0"} : {backgroundColor:"#ff0000"}}> */}
                 {/* isso aqui funciona acima */}
 
@@ -55,6 +68,14 @@ export default function Header() {
                     <Link href='/report'>
                         <a>Comissões</a>
                     </Link>
+
+                    {
+                        typeUser === 'master' && (
+                            <Link href='/invoicing'>
+                                <a>Faturamento</a>
+                            </Link>
+                        )
+                    }
 
                     <button onClick={signOut}>
                         <FiLogOut color='#ffffff' size={24} />

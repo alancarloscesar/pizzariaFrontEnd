@@ -6,8 +6,9 @@ import { FiLogOut } from 'react-icons/fi'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { useContext } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '../Header'
+import { setupAPIClient } from '../../../services/api'
 
 
 export default function MenuMobile() {
@@ -15,6 +16,17 @@ export default function MenuMobile() {
     window.scrollTo(0, 0);//pagina indo para o topo
     const [menuDesktop, setMenuDesktop] = useState(false)
     const { signOut } = useContext(AuthContext)
+    const [typeUser, setTypeUser] = useState('')
+
+    const api = setupAPIClient();
+
+    useEffect(() => {
+        async function loadUser() {
+            const response = await api.get('/me')
+            setTypeUser(response.data.type)
+        }
+        loadUser()
+    }, [])
 
     return (
         <>
@@ -62,6 +74,14 @@ export default function MenuMobile() {
                     <Link href='/report'>
                         <a>Comissões</a>
                     </Link>
+
+                    {
+                        typeUser === 'master' && (
+                            <Link href='/invoicing'>
+                                <a>Faturamento</a>
+                            </Link>
+                        )
+                    }
 
                     <button onClick={signOut}>
                         <p>Sair</p>

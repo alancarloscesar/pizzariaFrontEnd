@@ -19,6 +19,7 @@ type UserProps = {
   id: string;
   name: string;
   email: string;
+  type: string;
 }
 
 type SignInProps = {
@@ -60,12 +61,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     if (token) {
       api.get('/me').then(response => {//se der certo a requisição /me
-        const { id, name, email } = response.data;
+        const { id, name, email, type } = response.data;
 
         setUser({
           id,
           name,
-          email
+          email,
+          type
         })
       })
         .catch(() => {
@@ -83,7 +85,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       })
       // console.log(response.data);
 
-      const { id, name, token } = response.data;
+      const { id, name, token, type } = response.data;
 
       setCookie(undefined, '@nextauth.token', token, {
         maxAge: 60 * 60 * 24 * 30, // Expirar em 1 mes
@@ -94,12 +96,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
         id,
         name,
         email,
+        type
       })
 
       //Passar para proximas requisiçoes o nosso token
       api.defaults.headers['Authorization'] = `Bearer ${token}`
 
-      toast.success(`Bem Vindo(a) ${user?.name}`)
+      toast.success(`Bem Vindo(a) ${response.data.name}`)
       //Redirecionar o user para /dashboard
       Router.push('/dashboard')
 

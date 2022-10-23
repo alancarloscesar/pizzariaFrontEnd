@@ -1,0 +1,127 @@
+.card {
+    width: 65%;
+    height: 80%;
+    background-color: #fff;
+    border-radius: 25px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    box-shadow: 1px 13px 24px -4px rgba(255, 255, 255, 0.17);
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #101026;
+        height: 40%;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 45%;
+
+        .name {
+            font-size: 25px;
+            color: #212121;
+            text-align: center;
+            margin: 3% 0;
+        }
+
+        .areaDate {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 3px;
+            color: #6b6a6a;
+
+            h3 {
+                padding-right: 10px;
+            }
+        }
+
+        hr {
+            background-color: #212121;
+            width: 90%;
+            margin-top: 5%;
+        }
+
+        .areaPrice {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 3rem;
+            margin-top: 10%;
+            color: #212121;
+        }
+
+        .rs {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #6b6a6a;
+            margin-left: .3rem;
+        }
+
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        button {
+            background-color: #3fffa3;
+            border: 0;
+            height: 2rem;
+            width: 22vw;
+            border-radius: 1rem;
+            color: #fff;
+            font-weight: bold;
+            margin-top: 1.2rem;
+        }
+
+    }
+}
+
+@media (max-width: 689px) {
+
+    .card {
+        width: 80%;
+        height: 400px;
+        margin-top: 20%;
+    }
+}
+
+@media (max-width: 308px) {
+
+    .card {
+        width: 95%;
+        height: 300px;
+        margin-top: 30%;
+
+        footer {
+            button {
+                width: 60vw;
+                margin-top: 5%;
+            }
+        }
+    }
+
+    .areaDate {
+        h3 {
+            font-size: 12px;
+        }
+    }
+
+}

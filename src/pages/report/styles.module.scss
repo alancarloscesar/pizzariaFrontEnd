@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+}
+
+.areaPicker {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+
+    article {
+        width: 100%;
+        text-align: center;
+    }
+    
+    h3 {
+        color: rgba(255, 255, 255, 0.692);
+        font-weight: 200;
+        text-align: left;
+        padding-left: 10%;
+    }
+
+    select {
+        background-color: #101026;
+        border: 1px solid rgba(255, 255, 255, 0.767);
+        height: 3rem;
+        width: 80%;
+        border-radius: .3rem;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+.datePicker {
+    border: 1px solid rgba(255, 255, 255, 0.767);
+    border-radius: .3rem;
+    height: 3rem;
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+    background-color: #101026;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.btnGerar {
+    margin-top: 1rem;
+    border-radius: .3rem;
+    border: 0;
+    height: 3rem;
+    width: 80%;
+    background-color: #3fffa3;
+    font-weight: bold;
+    color: #101026;
+    font-size: 16px;
+}
+
+.areaCard {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 562px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 35%;
+        
+    }
+
+    .areaPicker{
+        width: 90%;
+    }
+    
+    .areaCard{
+        width: 90%;
+        
+    }
+
+}
+
+@media (max-width: 474px) {
+    .container{
+        margin-top: 40%;
+    }
+}
+
+@media (max-width: 390px) {
+    .container{
+        margin-top: 65%;
+    }
+}

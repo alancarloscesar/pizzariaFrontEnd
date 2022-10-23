@@ -84,7 +84,7 @@ export default function SignUp() {
             </Button>
 
             <Link href='/'>
-              <a>Já tem uma conta? faça seu login!</a>
+              <a>Já tem uma conta? <strong style={{color: '#ff3f4b'}}>Faça seu login!</strong></a>
             </Link>
 
           </form>

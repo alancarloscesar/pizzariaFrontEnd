@@ -77,7 +77,7 @@ export default function Home() {
             </Button>
 
             <Link href='/signup'>
-              <a className={styles.text}>Não tem uma conta? crie uma agora mesmo!</a>
+              <a className={styles.text}>Não tem uma conta? <strong style={{color: '#ff3f4b'}}>Crie uma agora mesmo!</strong></a>
             </Link>
 
           </form>

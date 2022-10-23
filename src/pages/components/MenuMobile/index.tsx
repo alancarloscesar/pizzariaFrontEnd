@@ -1,40 +1,47 @@
+
 import styles from './styles.module.scss'
 import stylesMobile from './stylesMobile.module.scss'
 import Link from 'next/link'
 import { FiLogOut } from 'react-icons/fi'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { useContext } from 'react'
-import { FiMenu } from 'react-icons/fi'
+import { FiMenu, FiX } from 'react-icons/fi'
 import { useState } from 'react'
-import MenuMobile from '../MenuMobile'
+import Header from '../Header'
 
-export default function Header() {
 
-    const [menuMobile, setMenuMobile] = useState(false)
+export default function MenuMobile() {
+    //document.documentElement.style.overflow = 'hidden';//oculta o scrol da page
+    window.scrollTo(0, 0);//pagina indo para o topo
+    const [menuDesktop, setMenuDesktop] = useState(false)
     const { signOut } = useContext(AuthContext)
 
     return (
         <>
+
             {
-                menuMobile && (
-                    <MenuMobile />
+                menuDesktop && (
+                    <Header />
                 )
             }
-            <div className={styles.container} style={menuMobile ? {display: 'none'} : {}}>
-                {/* <div className={styles.container} style={menuMobile ? {backgroundColor:"#ff0"} : {backgroundColor:"#ff0000"}}> */}
-                {/* isso aqui funciona acima */}
 
-                <Link href='/dashboard' className={styles.linkImg} style={menuMobile ? { display: 'none' } : {}}>
-                    <img src="/logo.png" alt="minha img" width={120} height={100} />
-                </Link>
+            <div className={styles.container} style={menuDesktop ? { display: 'none' } : {}}>
 
-                <a style={{ cursor: "pointer" }} className={styles.menu} onClick={() => setMenuMobile(!menuMobile)}>
-                    <FiMenu size={40} color="#fff" />
-                </a>
+                <div className={styles.menuArea}>
+                    <Link href='/dashboard' className={styles.linkImg} >
+                        <img src="/logo.png" alt="minha img" width={85} height={80} />
+                    </Link>
 
+                    <a style={{ cursor: "pointer" }} className={styles.menu} onClick={() => setMenuDesktop(!menuDesktop)}>
+                        <FiX size={40} color="#fff" />
+                    </a>
+                </div>
 
-                <nav className={menuMobile ? stylesMobile.navHeader : styles.navHeader}>
+                <nav className={styles.navHeader}>
 
+                    <Link href='/dashboard'>
+                        <a>Dashboard</a>
+                    </Link>
 
                     <Link href='/category'>
                         <a>Categoria</a>
@@ -57,6 +64,7 @@ export default function Header() {
                     </Link>
 
                     <button onClick={signOut}>
+                        <p>Sair</p>
                         <FiLogOut color='#ffffff' size={24} />
                     </button>
                 </nav>

@@ -32,7 +32,7 @@
         height: 40px;
         padding-left: 15px;
         border-radius: 0.3rem;
-        margin-bottom: 3px;
+        margin: 3px 0;
     }
 
     textarea {
@@ -55,6 +55,44 @@
         border-radius: 0.3rem;
     }
 
+    // input[type=radio]:checked+label:before {
+    //     content: "\2022";
+    //     color: #f3f3f3;
+    //     font-size: 30px;
+    //     text-align: center;
+    //     line-height: 18px;
+    // }
+
+}
+
+.Areaswitch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    select {
+        background-color: var(--dark-900);
+        border: 0;
+        color: var(--white);
+        height: 40px;
+        width: 60%;
+        padding-left: 15px;
+        border-radius: 0.3rem;
+        margin: 3px 0;
+    }
+
+}
+
+.switch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+
+    h3 {
+        color: #fff;
+    }
 }
 
 .inputsData {
@@ -65,11 +103,15 @@
     color: var(--white);
     border-radius: 0.3rem;
     padding-left: 20px;
-
-
 }
 
-.labelAvatar{
+.inputsData::-webkit-outer-spin-button,
+.inputsData::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.labelAvatar {
     width: 100%;
     height: 190px;
     background-color: var(--dark-900);
@@ -82,45 +124,100 @@
     justify-content: center;
     align-items: center;
 
-    input{
+    input {
         display: none;
     }
 
-    span{
+    span {
         z-index: 99;
         position: absolute;
         opacity: 0.7;
         transition: all 0.7s;
 
-        &:hover{
+        &:hover {
             opacity: 1;
             transform: scale(1.2);
         }
     }
 }
 
-.preview{
+.preview {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 0.3rem;
 }
 
+.areaRadioBtn {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+    // justify-content: flex-end;
+
+    div {
+        margin-right: 1rem;
+    }
+
+    label {
+        color: #fff;
+        margin-left: .5rem;
+    }
+}
+
+
+
 @media (max-width: 915px) {
     .sectionData {
         flex-direction: column;
         width: 100vw;
-        
+
         h1 {
             color: var(--white);
             font-size: 7vw;
         }
     }
-    
+
     .formData {
         display: flex;
         flex-direction: column;
         min-width: 80vw;
     }
 
+}
+
+@media (max-width: 478px) {
+
+    .container{
+        margin-top: 35%;
+    }
+
+    .sectionData{
+        h1{
+            font-size: 1.4rem;
+            margin-bottom: 15%;
+        }
+    }
+
+    .Areaswitch {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        select {
+            width: 100%;
+            margin-bottom: 2%;
+        }
+
+
+    }
+
+    .switch {
+        width: 100%;
+        justify-content: flex-end;
+        padding-bottom: 2%;
+
+        h3 {
+            padding-right: 2%;
+        }
+    }
 }

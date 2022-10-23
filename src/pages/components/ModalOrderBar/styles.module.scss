@@ -25,15 +25,17 @@
     margin-top: 1rem;
 
     strong {
-
         color: var(--red-900);
     }
 }
 
-.description {
-    margin-top: .3rem;
-    margin-left: 1.5rem;
-    font-size: .8rem;
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-top: 5rem;
 }
 
 .finishedOrder {
@@ -41,9 +43,28 @@
     border: 0;
     color: var(--green-900);
     padding: 0.5rem;
-    margin-top: 2rem;
     border-radius: .4rem;
 }
+
+.area10percent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h3{
+        margin-right: .7rem;
+        color: #fff;
+    }
+}
+
+.switch{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
 
 @media (max-width: 610px) {
     .container {

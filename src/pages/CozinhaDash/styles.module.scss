@@ -83,7 +83,6 @@
 
     main {
         width: 100%;
-        color: #fff;
     }
 
     footer {
@@ -100,75 +99,4 @@
 
 .card:hover {
     background-color: #101026;
-}
-
-@media(max-width: 840px) {
-    .card {
-        height: 60vh;
-        width: 300px;
-
-        footer p {
-            margin-top: -20%;
-        }
-    }
-
-}
-
-@media(max-width: 537px) {
-    .card {
-        height: 50vh;
-        width: 300px;
-
-        footer p {
-            margin-top: -20%;
-            font-size: 20px;
-        }
-    }
-
-}
-
-@media(max-width: 477px) {
-    .card {
-        height: 40vh;
-        width: 300px;
-
-        header img {
-            width: 80%;
-        }
-    }
-
-}
-
-@media(max-width: 424px) {
-
-    .container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        margin-top: 10%;
-    }
-
-    .containerCard {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .card {
-        height: 40vh;
-        width: 13rem;
-        margin-top: 20%;
-
-        header img {
-            width: 80%;
-        }
-        footer p {
-            margin-top: -35%;
-            font-size: 17px;
-        }
-    }
-
 }

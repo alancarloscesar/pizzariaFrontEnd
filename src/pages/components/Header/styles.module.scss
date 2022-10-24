@@ -68,17 +68,19 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem 0;
-        
+
     }
-    .navHeader{
+
+    .navHeader {
         display: none;
     }
-    .menu{
+
+    .menu {
         display: flex;
         border: 1px solid rgba(255, 255, 255, 0.288);
         border-radius: 5px;
     }
-    
+
 }
 
 @media (max-width: 460px) {

@@ -1,0 +1,135 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.areaDados{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 50vh;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+
+}
+
+.areaImprimir{
+    display: flex;
+    width: 80%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 1% 3% 1% 0;
+
+    button{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+
+        background-color: #FF3F4B;
+        border: 0;
+        width: 150px;
+        height: 2rem;
+        color: #fff;
+        font-weight: bold;
+        border-radius: .3rem;
+    }
+}
+
+.areaPicker {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+
+    article {
+        width: 100%;
+        text-align: center;
+    }
+    
+    h3 {
+        color: rgba(255, 255, 255, 0.692);
+        font-weight: 200;
+        text-align: left;
+        padding-left: 10%;
+    }
+}
+
+.datePicker {
+    border: 1px solid rgba(255, 255, 255, 0.767);
+    border-radius: .3rem;
+    height: 3rem;
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+    background-color: #101026;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.areaBtn{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+}
+
+.areaFiltros{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+
+    label{
+        width: 50%;
+        text-align:center;
+    }
+}
+
+.btnGerar {
+    margin-top: 1rem;
+    border-radius: .3rem;
+    border: 0;
+    height: 2.7rem;
+    width: 80%;
+    background-color: #3fffa3;
+    font-weight: bold;
+    color: #101026;
+    font-size: 16px;
+}
+
+.areaTotal{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    width: 80%;
+    margin-top: 3%;
+
+    justify-content: space-between;
+    align-items: center;
+
+    div{
+        height: 4px;
+        width: 70%;
+        background-color: #FF3F4B;
+        border-radius: .3rem;
+    }
+
+    h1{
+        font-size: 5vw;
+    }
+
+    strong{
+        color: #FF3F4B;
+        font-size: 2.5vw;
+    }
+}
+

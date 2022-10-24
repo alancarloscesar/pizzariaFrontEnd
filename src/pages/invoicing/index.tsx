@@ -265,7 +265,6 @@ export default function Report() {
                             // ea inicial normal no dia exato
                             />
                         </article>
-
                     </section>
 
                     <section className={styles.areaBtn}>

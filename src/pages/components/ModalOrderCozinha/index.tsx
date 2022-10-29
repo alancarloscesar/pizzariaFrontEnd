@@ -125,7 +125,7 @@ export function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }:
                     <section className={styles.footer}>
 
 
-                        <h2 style={{ fontWeight: 100, marginLeft: 25 }}>Total: <strong>{checked ? dataAccount?.conta_comissao : dataAccount?.valor_conta}</strong></h2>
+                        <h2 style={{ fontWeight: 100, marginRight: 25 }}>Total: <strong>{checked ? dataAccount?.conta_comissao : dataAccount?.valor_conta}</strong></h2>
                     </section>
 
                 </main>

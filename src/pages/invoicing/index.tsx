@@ -231,7 +231,7 @@ export default function Report() {
                                     <button>
                                         Imprimir
 
-                                        <FiPrinter size={24} color="#fff" />
+                                        <FiPrinter size={24} color="#fff" className={styles.icon}/>
                                     </button>
                                 )}
                             </PDFDownloadLink>

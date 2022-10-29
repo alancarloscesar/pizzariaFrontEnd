@@ -8,7 +8,7 @@ export function setupAPIClient(ctx = undefined){
   let cookies = parseCookies(ctx);
 
   const api = axios.create({
-    baseURL: 'http://localhost:3333',//do backend
+    baseURL: 'https://smartmenumuduru.herokuapp.com/',//do backend
     headers: {
       Authorization: `Bearer ${cookies['@nextauth.token']}`
     }

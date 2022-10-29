@@ -3,11 +3,29 @@
     flex-direction: column;
     color: var(--white);
     width: 40vw;
+    height: 50vh;
+    overflow: auto;
 
     h2 {
         margin-bottom: 2rem;
     }
 }
+
+//scrol bar css
+.container::-webkit-scrollbar {
+    width: 5px;
+    scroll-padding-bottom: 50px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 2px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: #FF3F4B;
+    border-radius: 5px;
+  }
 
 .table {
     font-size: 1.5rem;

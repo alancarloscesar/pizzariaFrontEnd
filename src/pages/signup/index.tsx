@@ -7,8 +7,8 @@ import { toast } from 'react-toastify'
 
 import logoImg from '../../../public/logo.png';
 
-import { Input } from '../components/ui/Input'
-import { Button } from '../components/ui/Button'
+import Input  from '../components/ui/Input'
+import Button from '../components/ui/Button'
 
 import Link from 'next/link';
 

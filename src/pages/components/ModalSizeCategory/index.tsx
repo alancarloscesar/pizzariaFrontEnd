@@ -22,7 +22,7 @@ export type ModalProps = {
     name: string
 }
 
-export function ModalSizeCategory({ isOpen, onRequestClose, getCaregoryName, getCategoryId/*, order, handleFinishOrder */ }: ModalSizeProps) {
+export default function ModalSizeCategory({ isOpen, onRequestClose, getCaregoryName, getCategoryId/*, order, handleFinishOrder */ }: ModalSizeProps) {
 
     const [nameSize, setNameSize] = useState('')
 

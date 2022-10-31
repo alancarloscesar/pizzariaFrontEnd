@@ -1,11 +1,10 @@
 
 import styles from './styles.module.scss'
-import stylesMobile from './stylesMobile.module.scss'
 import Link from 'next/link'
 import { FiLogOut } from 'react-icons/fi'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { useContext } from 'react'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { FiX } from 'react-icons/fi'
 import { useState, useEffect } from 'react'
 import Header from '../Header'
 import { setupAPIClient } from '../../../services/api'

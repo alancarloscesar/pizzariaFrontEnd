@@ -26,7 +26,7 @@ interface ItemProps {
     name: string;
 }
 
-export function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }: ModalOrderProps) {
+export default function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }: ModalOrderProps) {
 
     const setupApi = setupAPIClient()
 

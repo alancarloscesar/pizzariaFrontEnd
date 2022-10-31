@@ -8,7 +8,7 @@ import { FiRefreshCcw } from 'react-icons/fi'
 
 import { setupAPIClient } from '../../services/api'
 
-import { ModalOrder } from '../components/ModalOrderCozinha'
+import ModalOrder  from '../components/ModalOrderCozinha'
 
 import Modal from 'react-modal';
 

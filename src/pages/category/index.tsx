@@ -7,7 +7,7 @@ import { canSSRAuth } from "../../utils/canSSRAuth";
 
 import Modal from 'react-modal';
 
-import { ModalSizeCategory } from "../components/ModalSizeCategory";
+import ModalSizeCategory  from "../components/ModalSizeCategory";
 
 export default function Category() {
 

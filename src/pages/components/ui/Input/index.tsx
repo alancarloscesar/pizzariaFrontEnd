@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{}
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement>{}
 
-export function Input({...rest}: InputProps){
+export default function Input({...rest}: InputProps){
     return(
         <input className={styles.input}{...rest} />
     )

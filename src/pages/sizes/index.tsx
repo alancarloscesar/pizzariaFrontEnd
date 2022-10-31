@@ -15,7 +15,10 @@ export default function Size() {
     const [categorySelected, setCategorySelected] = useState(0)
 
     useEffect(() => {
-        () => { loadCategory() }
+        const loadcat = () => {
+
+            loadCategory()
+        }
     }, [loadCategory])
 
     async function loadCategory() {

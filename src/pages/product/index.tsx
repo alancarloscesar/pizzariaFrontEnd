@@ -45,7 +45,7 @@ export default function Product({ categoryList, sizeList }: CategoryProps) {
 
     useEffect(() => {
         loadSizeCategory()
-    }, [])
+    }, [loadSizeCategory])
 
     //selecionando categoria
     function handleChangeCategory(event) {

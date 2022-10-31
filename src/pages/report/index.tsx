@@ -18,6 +18,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { PDFDownloadLink, View } from '@react-pdf/renderer'
 import { Page, Text, Image, Document, StyleSheet } from "@react-pdf/renderer";
 
+//import {Image} from 'next/image';
 
 
 
@@ -47,7 +48,7 @@ export default function Report() {
 
         loadUser();
 
-    }, [])
+    }, [loadUser()])
 
     async function loadUser() {
         const response = await api.get('/user/name');
@@ -244,6 +245,7 @@ export default function Report() {
                     <div className={style.card}>
                         <header>
                             <img src="/user.png" alt="minha img" width={100} height={100} />
+                            {/* <Image src="/user.png" alt="minha img" width={100} height={100} /> */}
                         </header>
 
                         <main>

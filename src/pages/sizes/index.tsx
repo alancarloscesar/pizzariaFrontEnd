@@ -15,8 +15,8 @@ export default function Size() {
     const [categorySelected, setCategorySelected] = useState(0)
 
     useEffect(() => {
-        loadCategory()
-    }, [])
+        () => { loadCategory() }
+    }, [loadCategory])
 
     async function loadCategory() {
         const response = await setupApi.get('/category')

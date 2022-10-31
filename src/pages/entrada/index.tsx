@@ -58,7 +58,7 @@ export default function Entrada({ categoryList, sizeList, productList }: Categor
     useEffect(() => {
         loadSizeCategory()
         loadProducts()
-    }, [])
+    }, [loadSizeCategory, loadProducts])
 
     // async function verificaEstoque() {
     //     const response = await apiClient.getasdf

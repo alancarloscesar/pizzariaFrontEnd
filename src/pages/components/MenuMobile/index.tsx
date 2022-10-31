@@ -26,7 +26,7 @@ export default function MenuMobile() {
             setTypeUser(response.data.type)
         }
         loadUser()
-    }, [])
+    }, [api])
 
     return (
         <>

@@ -71,7 +71,7 @@ export function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }:
 
         handleLoad()
 
-    }, [])
+    }, [order, setupApi])
 
     const handleChange = nextChecked => {
         setChecked(nextChecked);

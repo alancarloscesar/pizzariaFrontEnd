@@ -8,7 +8,6 @@ import Header from '../components/Header'
 import { setupAPIClient } from '../../services/api'
 
 
-
 export default function Dashboard() {
 
 
@@ -27,7 +26,7 @@ export default function Dashboard() {
                             <Link href='/CozinhaDash'>
                                 <a>
                                     <header>
-                                        <img src="/cozinha.png" />
+                                        <img src="/cozinha.png" alt='img cozinha'/>
                                     </header>
                                     <main>
                                         <hr />
@@ -43,7 +42,7 @@ export default function Dashboard() {
                             <Link href='/BarDash'>
                                 <a>
                                     <header>
-                                        <img src="/bar.png" />
+                                        <img src="/bar.png" alt='img bar'/>
                                     </header>
                                     <main>
                                         <hr />

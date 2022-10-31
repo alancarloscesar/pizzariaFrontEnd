@@ -24,7 +24,7 @@ export default function Header() {
             setTypeUser(response.data.type)
         }
         loadUser()
-    }, [])
+    }, [api])
 
     return (
         <>

@@ -1,7 +1,7 @@
 import { useState, FormEvent, useContext } from 'react'
 import Head from 'next/head'
 import Image from 'next/image';
-import styles from '../../../styles/home.module.scss';//pegando mesmo arquivo de scss do home
+import styles from './home.module.scss';//pegando mesmo arquivo de scss do home
 import { AuthContext } from '../../contexts/AuthContext'
 import { toast } from 'react-toastify'
 

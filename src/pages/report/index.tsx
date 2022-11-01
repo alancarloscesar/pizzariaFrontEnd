@@ -15,8 +15,15 @@ registerLocale('pt', pt)
 import { setupAPIClient } from "../../services/api";
 import { AuthContext } from "../../contexts/AuthContext";
 
-import { PDFDownloadLink, View } from '@react-pdf/renderer'
+import { View, PDFDownloadLink } from '@react-pdf/renderer'
 import { Page, Text, Image, Document, StyleSheet } from "@react-pdf/renderer";
+import dynamic from 'next/dynamic'
+
+PDFDownloadLink: () => null
+// const PDFDownloadLink = dynamic(() => import('@react-pdf/renderer'), {
+//     ssr: false
+// });
+
 
 //import {Image} from 'next/image';
 
@@ -141,6 +148,7 @@ export default function Report() {
 
     //COMPONENTE DO PDF
     const PDFFiles = () => {
+        PDFDownloadLink: () => null
         return (
             <Document>
                 <Page style={stylesPdf.body}>
@@ -259,13 +267,12 @@ export default function Report() {
 
                         <footer>
                             <PDFDownloadLink document={<PDFFiles />} fileName="Comissões">
-                                {/* {({ loading }) => loading ? (
+                                {({ loading }) => loading ? (
                                     'Carregando...'
-                                ) : ( */}
-                                <button className={style.btnIm}>Imprimir</button>
-                                {/* )} */}
+                                ) : (
+                                    <button className={style.btnIm}>Imprimir</button>
+                                )}
                             </PDFDownloadLink>
-                            {/* <button>Imprimir</button> */}
 
                         </footer>
 

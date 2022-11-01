@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import styles from './styles.module.scss'
 import style from './styleCard.module.scss'
 import { format, add } from 'date-fns'
@@ -44,16 +44,11 @@ export default function Report() {
     setDefaultLocale('pt');
     const api = setupAPIClient();
 
-    useEffect(() => {
-
-        loadUser();
-
-    }, [loadUser()])
-
     async function loadUser() {
         const response = await api.get('/user/name');
         setUserList(response.data)
     }
+
 
     async function handleComissao() {
 
@@ -151,7 +146,7 @@ export default function Report() {
                 <Page style={stylesPdf.body}>
                     <View style={stylesPdf.areaTitulo}>
                         <Text style={stylesPdf.header} fixed>Relatório de Comissões</Text>
-                        <Image style={stylesPdf.image} src="/logopdf.png" />
+                        {/* <Image style={stylesPdf.image} src="/logopdf.png" /> */}
                     </View>
                     <View style={stylesPdf.line} />
 
@@ -264,11 +259,11 @@ export default function Report() {
 
                         <footer>
                             <PDFDownloadLink document={<PDFFiles />} fileName="Comissões">
-                                {({ loading }) => loading ? (
+                                {/* {({ loading }) => loading ? (
                                     'Carregando...'
-                                ) : (
-                                    <button className={style.btnIm}>Imprimir</button>
-                                )}
+                                ) : ( */}
+                                <button className={style.btnIm}>Imprimir</button>
+                                {/* )} */}
                             </PDFDownloadLink>
                             {/* <button>Imprimir</button> */}
 

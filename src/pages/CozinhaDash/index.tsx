@@ -70,6 +70,11 @@ export default function CozinhaDash({ orders }: HomeProps) {
             }
         })
 
+        if(response.data === ''){
+            alert('nada aqui')
+            return;
+        }
+
         setModalItem(response.data);
         setModalVisible(true);
 

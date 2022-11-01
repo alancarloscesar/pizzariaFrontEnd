@@ -43,9 +43,6 @@ export default function Product({ categoryList, sizeList }: CategoryProps) {
 
     const [checked, setChecked] = useState(false)
 
-    useEffect(() => {
-        loadSizeCategory()
-    }, [loadSizeCategory])
 
     //selecionando categoria
     function handleChangeCategory(event) {

@@ -1,4 +1,4 @@
-import { useState, FormEvent, useEffect } from 'react'
+import { useState, FormEvent, useEffect, useCallback } from 'react'
 import Header from "../components/Header"
 import styles from './styles.module.scss'
 import { setupAPIClient } from '../../services/api';
@@ -14,12 +14,6 @@ export default function Size() {
     const [categories, setCategories] = useState([])
     const [categorySelected, setCategorySelected] = useState(0)
 
-    useEffect(() => {
-        const loadcat = () => {
-
-            loadCategory()
-        }
-    }, [loadCategory])
 
     async function loadCategory() {
         const response = await setupApi.get('/category')

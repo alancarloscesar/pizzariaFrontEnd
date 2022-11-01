@@ -30,7 +30,6 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
 
     const setupApi = setupAPIClient()
 
-    const [dataOrder, setDataOrder] = useState<OrderItemProps[]>()
     const [dataAccount, setDataAccount] = useState<AccountProps>()
     const [dataItems, setDataItem] = useState<ItemProps>()
     const [checked, setChecked] = useState(true)
@@ -54,13 +53,13 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
 
             const response = await setupApi.get('/order/account', {
                 params: {
-                    order_id: order[0].order_id
+                    order_id: order[0]?.order_id
                 }
             })
 
             const resp = await setupApi.get('/order/detail', {
                 params: {
-                    order_id: order[0].order_id,
+                    order_id: order[0]?.order_id,
                     pertencente: "bar"
                 }
             })
@@ -109,7 +108,7 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
 
                 <h2 className={styles.detalhes}>Detalhes do pedido</h2>
                 <span className={styles.table}>
-                    Mesa: <strong>{order[0].order.table}</strong>
+                    Mesa: <strong>{order[0]?.order.table}</strong>
                 </span>
 
                 <main className='main'>

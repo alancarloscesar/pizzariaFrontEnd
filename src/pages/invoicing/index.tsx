@@ -168,7 +168,7 @@ export default function Report() {
                 <Page style={stylesPdf.body}>
                     <View style={stylesPdf.areaTitulo}>
                         <Text style={stylesPdf.header} fixed>Relatório de Faturamento</Text>
-                        <Image style={stylesPdf.image} src="/logopdf.png"/>
+                        {/* <Image style={stylesPdf.image} src="/logopdf.png" /> */}
                     </View>
                     <View style={stylesPdf.line} />
 
@@ -231,7 +231,7 @@ export default function Report() {
                                     <button>
                                         Imprimir
 
-                                        <FiPrinter size={24} color="#fff" className={styles.icon}/>
+                                        <FiPrinter size={24} color="#fff" className={styles.icon} />
                                     </button>
                                 )}
                             </PDFDownloadLink>

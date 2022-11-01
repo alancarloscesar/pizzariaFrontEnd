@@ -19,7 +19,7 @@ import { View, PDFDownloadLink } from '@react-pdf/renderer'
 import { Page, Text, Image, Document, StyleSheet } from "@react-pdf/renderer";
 import dynamic from 'next/dynamic'
 
-PDFDownloadLink: () => null
+
 // const PDFDownloadLink = dynamic(() => import('@react-pdf/renderer'), {
 //     ssr: false
 // });
@@ -47,6 +47,12 @@ export default function Report() {
     const [comissao, setComissao] = useState<contaProps[] | []>([])
     const [dataReport, setDataReport] = useState<contaProps[] | []>([])
     const [valorTotalComissao, setValorTotal] = useState('')
+
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
 
     setDefaultLocale('pt');
     const api = setupAPIClient();
@@ -148,7 +154,7 @@ export default function Report() {
 
     //COMPONENTE DO PDF
     const PDFFiles = () => {
-        PDFDownloadLink: () => null
+
         return (
             <Document>
                 <Page style={stylesPdf.body}>
@@ -266,13 +272,18 @@ export default function Report() {
                         </main>
 
                         <footer>
-                            <PDFDownloadLink document={<PDFFiles />} fileName="Comissões">
-                                {({ loading }) => loading ? (
-                                    'Carregando...'
-                                ) : (
-                                    <button className={style.btnIm}>Imprimir</button>
-                                )}
-                            </PDFDownloadLink>
+                            {
+                                isClient && (
+
+                                    <PDFDownloadLink document={<PDFFiles />} fileName="Comissões">
+                                        {({ loading }) => loading ? (
+                                            'Carregando...'
+                                        ) : (
+                                            <button className={style.btnIm}>Imprimir</button>
+                                        )}
+                                    </PDFDownloadLink>
+                                )
+                            }
 
                         </footer>
 

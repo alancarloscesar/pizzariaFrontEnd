@@ -10,7 +10,7 @@ import ReactSwitch from 'react-switch';
 interface ModalOrderProps {
     isOpen: boolean;
     onRequestClose: () => void;
-    order: OrderItemProps[];
+    order: OrderItemProps[] | [];
 
     handleFinishOrder: (id: string) => void;//para finalizar o pedido
 }
@@ -59,7 +59,7 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
 
             const resp = await setupApi.get('/order/detail', {
                 params: {
-                    order_id: order[0]?.order_id,
+                    order_id: order?.[0]?.order_id,
                     pertencente: "bar"
                 }
             })
@@ -108,12 +108,12 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
 
                 <h2 className={styles.detalhes}>Detalhes do pedido</h2>
                 <span className={styles.table}>
-                    Mesa: <strong>{order[0]?.order.table}</strong>
+                    Mesa: <strong>{order?.[0]?.order.table}</strong>
                 </span>
 
                 <main className='main'>
 
-                    {order.map((item, index) => (
+                    {order?.map((item, index) => (
 
                         <section key={item.id} className={styles.containerItem}>
                             <span>{item.amount}x - <strong>{dataItems ? dataItems[index].name : "erro"} </strong>- {item.product.tamanho}</span>

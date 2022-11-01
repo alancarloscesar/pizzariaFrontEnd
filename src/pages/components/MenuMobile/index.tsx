@@ -12,7 +12,8 @@ import { setupAPIClient } from '../../../services/api'
 
 export default function MenuMobile() {
     //document.documentElement.style.overflow = 'hidden';//oculta o scrol da page
-    window.scrollTo(0, 0);//pagina indo para o topo
+    //window.scrollTo(0, 0);//pagina indo para o topo
+    
     const [menuDesktop, setMenuDesktop] = useState(false)
     const { signOut } = useContext(AuthContext)
     const [typeUser, setTypeUser] = useState('')

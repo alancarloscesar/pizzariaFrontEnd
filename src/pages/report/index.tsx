@@ -37,8 +37,8 @@ export default function Report() {
     const [dataFinal, setDataFinal] = useState(new Date());
     const [userList, setUserList] = useState([]);
     const [userSelected, setUserSelected] = useState(0)
-    const [comissao, setComissao] = useState<contaProps[]>([])
-    const [dataReport, setDataReport] = useState<contaProps[]>([])
+    const [comissao, setComissao] = useState<contaProps[] | []>([])
+    const [dataReport, setDataReport] = useState<contaProps[] | []>([])
     const [valorTotalComissao, setValorTotal] = useState('')
 
     setDefaultLocale('pt');
@@ -220,7 +220,7 @@ export default function Report() {
                         <select value={userSelected} onChange={handleChangeGarcom} onClick={loadUser}
                         >
                             {
-                                userList.map((item) => (
+                                userList?.map((item) => (
                                     <option onClick={loadUser} key={item.id}>{item.name}</option>
                                 ))
                             }

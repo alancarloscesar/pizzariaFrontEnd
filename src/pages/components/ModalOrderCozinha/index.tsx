@@ -6,12 +6,11 @@ import { useState, useEffect } from 'react'
 import { OrderItemProps } from '../../CozinhaDash'
 import { setupAPIClient } from '../../../services/api'
 import ReactSwitch from 'react-switch';
-import { toast } from 'react-toastify';
 
 interface ModalOrderProps {
     isOpen: boolean;
     onRequestClose: () => void;
-    order: OrderItemProps[];
+    order: OrderItemProps[] | [];
 
     handleFinishOrder: (id: string) => void;//para finalizar o pedido
 }
@@ -31,7 +30,6 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
 
     const setupApi = setupAPIClient()
 
-    const [dataOrder, setDataOrder] = useState<OrderItemProps[]>()
     const [dataAccount, setDataAccount] = useState<AccountProps>()
     const [dataItems, setDataItem] = useState<ItemProps>()
     const [checked, setChecked] = useState(true)
@@ -55,13 +53,13 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
 
             const response = await setupApi.get('/order/account', {
                 params: {
-                    order_id: order[0]?.order_id
+                    order_id: order?.[0]?.order_id
                 }
             })
 
             const resp = await setupApi.get('/order/detail', {
                 params: {
-                    order_id: order[0]?.order_id,
+                    order_id: order?.[0]?.order_id,
                     pertencente: "cozinha"
                 }
             })
@@ -69,82 +67,72 @@ export default function ModalOrder({ isOpen, onRequestClose, order, handleFinish
             setDataItem(resp.data)
             setDataAccount(response.data)
         }
-        
+
         handleLoad()
 
     }, [order, setupApi])
 
-    const handleChange = nextChecked => {//switch
+    const handleChange = nextChecked => {
         setChecked(nextChecked);
     };
 
-
-
     return (
-        <>
-            {[dataItems].length !== 0 && (
+        <Modal
+            isOpen={isOpen}
+            onRequestClose={onRequestClose}
+            style={customStyles}
+        >
 
-                <Modal
-                    isOpen={isOpen}
-                    onRequestClose={onRequestClose}
-                    style={customStyles}
+            <div className={styles.area10percent}>
+                <button
+                    type="button"
+                    onClick={onRequestClose}
+                    className="react-modal-close"
+                    style={{ background: 'transparent', border: 0 }}
                 >
+                    <FiX size={45} color="#f34748" />
+                </button>
 
-                    <div className={styles.area10percent}>
-                        <button
-                            type="button"
-                            onClick={onRequestClose}
-                            className="react-modal-close"
-                            style={{ background: 'transparent', border: 0 }}
-                        >
-                            <FiX size={45} color="#f34748" />
-                        </button>
+                <div className={styles.switch}>
+                    <h3>+10% ?</h3>
+                    <ReactSwitch
+                        onChange={handleChange}
+                        checked={checked}
+                        className="react-switch"
+                        onColor='#3fffa3'
+                    />
+                </div>
+            </div>
 
-                        <div className={styles.switch}>
-                            <h3>+10% ?</h3>
-                            <ReactSwitch
-                                onChange={handleChange}
-                                checked={checked}
-                                className="react-switch"
-                                onColor='#3fffa3'
-                            />
-                        </div>
-                    </div>
+            <div className={styles.container}>
 
+                <h2 className={styles.detalhes}>Detalhes do pedido</h2>
+                <span className={styles.table}>
+                    Mesa: <strong>{order?.[0]?.order.table}</strong>
+                </span>
 
-                    <div className={styles.container}>
+                <main className='main'>
 
-                        <h2 className={styles.detalhes}>Detalhes do pedido</h2>
-                        <span className={styles.table}>
-                            Mesa: <strong>{order[0]?.order.table}</strong>
-                        </span>
+                    {order?.map((item, index) => (
 
-                        <main className='main'>
+                        <section key={item.id} className={styles.containerItem}>
+                            <span>{item.amount}x - <strong>{dataItems ? dataItems[index].name : "erro"} </strong>- {item.product.tamanho}</span>
+                        </section>
 
-                            {order.map((item, index) => (
+                    ))}
 
-                                <section key={item.id} className={styles.containerItem}>
-                                    <span>{item.amount}x - <strong>{dataItems ? dataItems[index]?.name : "erro"} </strong>- {item.product.tamanho}</span>
-                                </section>
+                    <section className={styles.footer}>
+                        <h2 style={{ fontWeight: 100, marginRight: 25 }}>Total: <strong>{checked ? dataAccount?.conta_comissao : dataAccount?.valor_conta}</strong></h2>
+                    </section>
 
-                            ))}
+                </main>
 
-                            <section className={styles.footer}>
+                <button className={styles.finishedOrder} onClick={() => { handleFinishOrder(order[0].order_id) }}>
+                    Concluir Pedido
+                </button>
 
+            </div>
 
-                                <h2 style={{ fontWeight: 100, marginRight: 25 }}>Total: <strong>{checked ? dataAccount?.conta_comissao : dataAccount?.valor_conta}</strong></h2>
-                            </section>
-
-                        </main>
-
-                        <button className={styles.finishedOrder} onClick={() => { handleFinishOrder(order[0].order_id) }}>
-                            Concluir Pedido
-                        </button>
-
-                    </div>
-
-                </Modal>
-            )}
-        </>
+        </Modal>
     )
 }
